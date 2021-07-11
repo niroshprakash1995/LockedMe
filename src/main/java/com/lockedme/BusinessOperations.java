@@ -10,7 +10,8 @@ public class BusinessOperations {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Please enter the filename you want to create:");
 		String filename = sc.nextLine();
-		File fileObj = new File("C:\\Users\\nprakash\\Desktop\\test\\" + filename);
+		String rootPath = System.getProperty("user.dir");
+		File fileObj = new File(rootPath + "\\" + filename);
 		try {
 			if(fileObj.createNewFile()) {
 				System.out.println("File created: " + fileObj.getName());
@@ -32,12 +33,13 @@ public class BusinessOperations {
 		boolean fileFound = false;
 		System.out.println("Please enter the filename you want to delete:");
 		String filename = sc.nextLine();
-		File fileObj = new File("C:\\Users\\nprakash\\Desktop\\test\\");
+		String rootPath = System.getProperty("user.dir");
+		File fileObj = new File(rootPath);
 		String[] fileList = fileObj.list();
 		for(int i=0; i<fileList.length; i++) {
 			if(fileList[i].equals(filename))
 			{
-				fileObj = new File("C:\\Users\\nprakash\\Desktop\\test\\" + filename);
+				fileObj = new File(rootPath + "\\" + filename);
 				fileObj.delete();
 				System.out.println("File deleted: " + fileObj.getName());
 				fileFound = true;
@@ -55,7 +57,8 @@ public class BusinessOperations {
 		boolean fileFound = false;
 		System.out.println("Please enter the filename you want to search:");
 		String filename = sc.nextLine();
-		File fileObj = new File("C:\\Users\\nprakash\\Desktop\\test\\");
+		String rootPath = System.getProperty("user.dir");
+		File fileObj = new File(rootPath);
 		String[] fileList = fileObj.list();
 		for(int i=0; i<fileList.length; i++) {
 			if(fileList[i].equals(filename))

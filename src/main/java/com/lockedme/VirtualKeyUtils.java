@@ -2,14 +2,16 @@ package com.lockedme;
 
 import java.io.File;
 import java.util.Arrays;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class VirtualKeyUtils {
 	public void listFiles() {
-		File file = new File("C:\\Users\\nprakash\\Desktop\\test");
+		String rootPath = System.getProperty("user.dir");
+		File file = new File(rootPath);
 		String[] fileList = file.list();
 		if (fileList.length == 0) {
-			System.out.println("There are no files in this directory");
+			System.out.println("There are no files in this directory.\n");
 		} else {
 			Arrays.sort(fileList);
 			System.out.println("The current filenames are:");
@@ -29,23 +31,27 @@ public class VirtualKeyUtils {
 		Scanner sc = new Scanner(System.in);
 		BusinessOperations b = new BusinessOperations();
 		VirtualKey v = new VirtualKey();
-
-		int businessOption = sc.nextInt();
-		switch (businessOption) {
-		case 1:
-			b.addFile();
-			break;
-		case 2:
-			b.deleteFile();
-			break;
-		case 3:
-			b.searchFile();
-			break;
-		case 4:
-			v.mainMenu();
-			break;
-		default:
-			System.out.println("Invalid option. Please try again.\n");
+		try {
+			int businessOption = sc.nextInt();
+			switch (businessOption) {
+			case 1:
+				b.addFile();
+				break;
+			case 2:
+				b.deleteFile();
+				break;
+			case 3:
+				b.searchFile();
+				break;
+			case 4:
+				v.mainMenu();
+				break;
+			default:
+				System.out.println("Invalid option. Please try again.\n");
+				businessOperations();
+			}
+		}catch(InputMismatchException e) {
+			System.out.println("Invalid input. Please try again.\n");
 			businessOperations();
 		}
 		sc.close();

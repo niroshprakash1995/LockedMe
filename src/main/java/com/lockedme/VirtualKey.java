@@ -34,7 +34,6 @@ public class VirtualKey {
 			switch (mainOption) {
 			case 1:
 				virtualKeyUtils.listFiles();
-				mainMenu();
 				break;
 			case 2:
 				virtualKeyUtils.businessOperations();

@@ -20,8 +20,7 @@ public class VirtualKeyUtils {
 			}
 		}
 	}
-	
-	
+
 	public void businessOperations() {
 		System.out.println("****Please select from the below business operations:");
 		System.out.println("1-Add a file to the existing directory list");
@@ -50,7 +49,7 @@ public class VirtualKeyUtils {
 				System.out.println("Invalid option. Please try again.\n");
 				businessOperations();
 			}
-		}catch(InputMismatchException e) {
+		} catch (InputMismatchException e) {
 			System.out.println("Invalid input. Please try again.\n");
 			businessOperations();
 		}
